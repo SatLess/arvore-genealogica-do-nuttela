@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckv10l07br7tg"]
+
+[ext_resource type="Script" uid="uid://crmmdh4p846l2" path="res://Manager.cs" id="1_emuub"]
+[ext_resource type="PackedScene" uid="uid://bmchl6ixbmuxc" path="res://profile.tscn" id="2_8hwog"]
+
+[node name="Manager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_emuub")
+profileScene = ExtResource("2_8hwog")
+
+[node name="Foto" type="Button" parent="."]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 558.0
+offset_right = 658.0
+offset_bottom = 612.0
+text = "Adicione Foto
+"

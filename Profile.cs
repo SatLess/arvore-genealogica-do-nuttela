@@ -49,7 +49,7 @@ public partial class Profile : TextureRect
 		for(int  i = 0; i < 4; i++){
 			Connector inst = connector.Instantiate<Connector>();
 			Vector2 vec = getConnectorPos(i);
-			inst.Position = vec;
+			inst.GlobalPosition += vec;
 			AddChild(inst);
 			
 		}

@@ -32,7 +32,7 @@ public partial class Connector : ColorRect
         
         if(@event.IsActionPressed("click") && !lineEnabled){
             lineEnabled = true;
-            SignalBus.Instance.EmitSignal(SignalBus.SignalName.LineAdded,this);
+           createLine();
         }
     }
     #endregion
@@ -46,6 +46,11 @@ public partial class Connector : ColorRect
         {
             SignalBus.Instance.EmitSignal(SignalBus.SignalName.LineConnected,this);
         }
+    }
+        private void createLine(){
+        HeritageLine line = new(this);
+        this.AddChild(line);
+        
     }
 
 }

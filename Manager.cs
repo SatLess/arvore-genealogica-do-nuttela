@@ -9,7 +9,7 @@ public partial class Manager : Control
 
     public override void _Ready()
     {
-        SignalBus.Instance.LineAdded += createLine;
+        //SignalBus.Instance.LineAdded += createLine;
         btn = GetNode<Button>("Foto");
         btn.Pressed += createFileDialog;
     }
@@ -39,10 +39,6 @@ public partial class Manager : Control
 
     }
 
-    private void createLine(Connector con1){
-        HeritageLine line = new(con1);
-        this.AddChild(line);
-        
-    }
+
 
 }

@@ -1,49 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7sj1pge15ci6"]
+[gd_scene load_steps=2 format=3 uid="uid://b7sj1pge15ci6"]
 
-[ext_resource type="Texture2D" uid="uid://bkioti2qa3eu0" path="res://icon.svg" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://crmmdh4p846l2" path="res://Manager.cs" id="1_1bvp3"]
-[ext_resource type="Script" uid="uid://uhcg8tl7l6hd" path="res://Profile.cs" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://bmchl6ixbmuxc" path="res://profile.tscn" id="2_lquwl"]
-[ext_resource type="PackedScene" uid="uid://d3lttusth02rc" path="res://connector.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ckv10l07br7tg" path="res://manager.tscn" id="1_ig7tw"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Manager" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_1bvp3")
-profileScene = ExtResource("2_lquwl")
-
-[node name="Foto" type="Button" parent="Manager"]
-layout_mode = 0
-offset_left = 464.0
-offset_top = 558.0
-offset_right = 658.0
-offset_bottom = 612.0
-text = "Adicione Foto
-"
-
-[node name="Profile" parent="Manager" instance=ExtResource("2_lquwl")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 128.0
-offset_bottom = 128.0
-
-[node name="Profile2" type="TextureRect" parent="Manager"]
-layout_mode = 0
-offset_left = 673.0
-offset_top = 202.0
-offset_right = 801.0
-offset_bottom = 330.0
-mouse_filter = 0
-texture = ExtResource("1_0xm2m")
-script = ExtResource("2_h2yge")
-connector = ExtResource("3_h2yge")
+[node name="Manager" parent="." instance=ExtResource("1_ig7tw")]
