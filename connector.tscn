@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3lttusth02rc"]
+
+[ext_resource type="Script" uid="uid://g2uio4rkaq8b" path="res://Connector.cs" id="1_x0e6h"]
+
+[node name="Connector" type="ColorRect"]
+anchors_preset = -1
+anchor_right = 0.00173611
+anchor_bottom = 0.00308642
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x0e6h")
