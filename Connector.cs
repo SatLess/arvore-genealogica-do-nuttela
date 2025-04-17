@@ -1,5 +1,6 @@
 using Godot;
 using System;
+#nullable enable
 
 public partial class Connector : ColorRect
 {
@@ -21,7 +22,7 @@ public partial class Connector : ColorRect
 
         CustomMinimumSize = Vector2.One * size;
         //Signal Handling
-        SignalBus.Instance.LineReleased += checkForCollision;
+        //SignalBus.Instance.LineReleased += checkForCollision;
 		MouseEntered += () => mouseEntered = true;
 		MouseExited += () => mouseEntered = false;
 
@@ -38,14 +39,15 @@ public partial class Connector : ColorRect
     #endregion
     
 
-    public void checkForCollision(Vector2 vecGlobal){
+    public bool checkForCollision(Vector2 vecGlobal){
         //WARNING as it stands it can connect to its own profile
-        if (isConnected) return;
-        if(lineEnabled) return; // So it does not connect to itself
+        if (isConnected) return false;
+        if(lineEnabled) return false; // So it does not connect to itself
         if(vecGlobal.DistanceTo(GlobalPosition) < size)
         {
-            SignalBus.Instance.EmitSignal(SignalBus.SignalName.LineConnected,this);
-        }
+            //SignalBus.Instance.EmitSignal(SignalBus.SignalName.LineConnected,this);
+            return true;
+        } return false;
     }
         private void createLine(){
         HeritageLine line = new(this);

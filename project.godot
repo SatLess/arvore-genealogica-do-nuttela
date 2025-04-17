@@ -23,6 +23,10 @@ SignalBus="*res://SignalBus.cs"
 
 project/assembly_name="Arvore genealogica do Nuttela"
 
+[global_group]
+
+Connector=""
+
 [input]
 
 click={

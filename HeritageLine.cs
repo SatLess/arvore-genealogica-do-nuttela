@@ -7,7 +7,8 @@ public partial class HeritageLine : Line2D
 {
 
 
-    private Connector start, end;
+    private Connector start;
+    private Connector end {set; get;}
     private Vector2 localStart, localEndX, localEndY;
 
     [Export] private PackedScene connector;
@@ -25,7 +26,11 @@ public partial class HeritageLine : Line2D
     {
         connector = ResourceLoader.Load<PackedScene>("uid://d3lttusth02rc");
 
-        SignalBus.Instance.LineConnected += (Connector con2) => {
+
+        SignalBus.Instance.LineFreed += freeLine;
+    }
+
+    public void lineConnect(Connector con2){
             if(IsInstanceValid(end)) return; //Prevent Redirect, might need more work
             end = con2;
             start.lineEnabled = true;
@@ -33,9 +38,6 @@ public partial class HeritageLine : Line2D
             end.lineEnabled = true;
             end.isConnected = true;
             addConnector();
-        };
-
-        SignalBus.Instance.LineFreed += freeLine;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -65,21 +67,20 @@ public partial class HeritageLine : Line2D
         if(IsInstanceValid(end) && IsInstanceValid(start)) return; //return to not cause problems with other inputs
         if(@event.IsActionReleased("click")){
             Vector2 oldPos = GetPointPosition(1);
-            SignalBus.Instance.EmitSignal(SignalBus.SignalName.LineReleased,ToGlobal(GetPointPosition(1)));
             GetViewport().SetInputAsHandled();
-            CallDeferred("canFree",oldPos);
+            Manager.getCon(ToGlobal(GetPointPosition(1)),this);
             
         }
     }
 
     private void canFree(Vector2 oldPos){
-            if(oldPos == GetPointPosition(1) && !IsInstanceValid(end)) { //Kinda spaghetti
-                freeLine();
-            }
+            if(IsInstanceValid(end)) { //Kinda spaghetti
+               return;
+            }  freeLine();
     }
 
 
-    private void freeLine(){
+    public void freeLine(){
     start.lineEnabled = false;
     start.isConnected = false;
     if(IsInstanceValid(end)){

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://g2uio4rkaq8b" path="res://Connector.cs" id="1_x0e6h"]
 
-[node name="Connector" type="ColorRect"]
+[node name="Connector" type="ColorRect" groups=["Connector"]]
 anchors_preset = -1
 anchor_right = 0.00173611
 anchor_bottom = 0.00308642

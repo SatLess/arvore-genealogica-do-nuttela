@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+
 public partial class Manager : Control
 {
     [Export] private PackedScene profileScene;
@@ -19,7 +20,7 @@ public partial class Manager : Control
         fileDialog.FileMode = FileDialog.FileModeEnum.OpenFile;
         fileDialog.Access = FileDialog.AccessEnum.Filesystem;
         fileDialog.UseNativeDialog = true;
-        fileDialog.Filters = ["*.png","*.jpeg"];
+        fileDialog.Filters = ["*.png","*.jpeg","*.jpg","*.jfif"];
         AddChild(fileDialog);
         fileDialog.FileSelected += createProfile;
         fileDialog.PopupCenteredRatio();
@@ -37,6 +38,19 @@ public partial class Manager : Control
         inst.Texture = texture;
         AddChild(inst);
 
+    }
+
+    public static void getCon(Vector2 vec, HeritageLine line){
+        GD.Print(line.GetTree().GetNodesInGroup("Connector"));
+        foreach(Connector c in line.GetTree().GetNodesInGroup("Connector")) {
+            bool end = c.checkForCollision(vec);
+            if (end) {
+                line.lineConnect(c);
+                return;
+                };
+            continue;
+            };
+            line.freeLine();
     }
 
 
